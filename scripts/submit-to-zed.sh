@@ -57,6 +57,9 @@ git submodule add "https://github.com/$MY_REPO.git" extensions/willow
 
 # Update extensions.toml
 echo -e "${YELLOW}Updating extensions.toml...${NC}"
+echo "Current directory: $(pwd)"
+echo "Files in current directory: $(ls -la)"
+echo "Looking for extensions.toml..."
 
 # Check if willow already exists in extensions.toml
 if grep -q '^\[willow\]' extensions.toml; then
