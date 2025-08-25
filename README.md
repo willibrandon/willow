@@ -14,18 +14,20 @@ Willow is a TODO/FIXME highlighting extension for the Zed editor that uses tree-
 
 ## Supported Keywords 🏷️
 
-| Keyword | Default Style | Description |
-|---------|--------------|-------------|
-| `TODO` | Info (Blue) | Tasks to be done |
-| `FIXME` | Warning (Yellow) | Known issues to fix |
-| `HACK` | Error (Red) | Temporary workarounds |
-| `NOTE` | Success (Green) | Important information |
-| `BUG` | Error (Red) | Confirmed bugs |
-| `OPTIMIZE` | Purple | Performance improvements |
-| `SECURITY` | Critical (Red) | Security concerns |
-| `DEPRECATED` | Muted (Gray) | Obsolete code |
-| `REVIEW` | Cyan | Code review needed |
-| `REFACTOR` | Blue | Refactoring needed |
+| Keyword | Description |
+|---------|-------------|
+| `TODO` | Tasks to be done |
+| `FIXME` | Known issues to fix |
+| `HACK` | Temporary workarounds |
+| `NOTE` | Important information |
+| `BUG` | Confirmed bugs |
+| `OPTIMIZE` | Performance improvements |
+| `SECURITY` | Security concerns |
+| `DEPRECATED` | Obsolete code |
+| `REVIEW` | Code review needed |
+| `REFACTOR` | Refactoring needed |
+
+Keywords are highlighted in comments using your theme's syntax colors, appearing distinct from regular comment text.
 
 ## Supported Languages 🌍
 
