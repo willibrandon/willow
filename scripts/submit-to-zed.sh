@@ -39,8 +39,8 @@ gh repo fork "$EXTENSIONS_REPO" --clone=false 2>/dev/null || true
 # Get the fork owner (current authenticated user)
 FORK_OWNER=$(gh api user --jq .login)
 
-# Clone the fork
-gh repo clone "$FORK_OWNER/extensions" extensions
+# Clone the fork  
+git clone "https://github.com/$FORK_OWNER/extensions.git" extensions
 cd extensions
 
 # Add upstream remote
@@ -75,6 +75,8 @@ rm -f extensions.toml.bak
 
 # Commit changes
 echo -e "${YELLOW}Committing changes...${NC}"
+git config user.name "github-actions[bot]"
+git config user.email "github-actions[bot]@users.noreply.github.com"
 git add .
 git commit -m "Add Willow v$VERSION - TODO/FIXME highlighter
 
