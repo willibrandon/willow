@@ -50,6 +50,14 @@ Willow is a TODO/FIXME highlighting extension for the Zed editor that uses tree-
 
 ## Installation 📦
 
+### From Extension Gallery
+
+1. Open the Extension Gallery:
+   - Press `Cmd+Shift+X` (macOS) or `Ctrl+Shift+X` (Linux)
+   - Or use the command palette (`Cmd+Shift+P`) and select "zed: extensions"
+
+2. Search for "Willow" and click Install
+
 ### As a Dev Extension
 
 1. Clone this repository:
