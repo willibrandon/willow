@@ -1,0 +1,24 @@
+id = "willow"
+name = "Willow - TODO Highlighter"
+version = "0.1.0"
+schema_version = 1
+authors = ["willibrandon <willibrandon@users.noreply.github.com>"]
+description = "Universal TODO/FIXME/HACK highlighting for all languages using tree-sitter"
+repository = "https://github.com/willibrandon/willow"
+
+# Define a custom grammar for TODO patterns
+[grammars.todo-injections]
+repository = "https://github.com/willibrandon/tree-sitter-todo-injections"
+commit = "main"
+
+# Language configuration for TODO highlighting
+[languages.todo-highlights]
+name = "TODO Highlights"
+grammar = "todo-injections"
+path_suffixes = []
+injection_regex = "todo-highlights"
+
+# Custom theme with TODO highlighting
+[themes]
+willow-dark = "themes/willow-dark.json"
+willow-light = "themes/willow-light.json"

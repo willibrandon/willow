@@ -1,0 +1,29 @@
+name = "TODO Highlights"
+grammar = "todo-injections"
+path_suffixes = []
+
+# This language is used for injection into comments
+injection_regex = "todo-highlights"
+
+[injections]
+# Inject into comments in various languages
+[[injections.patterns]]
+# C-style line comments
+pattern = '''
+  (comment) @injection.content
+  (#set! injection.language "todo-highlights")
+'''
+
+[[injections.patterns]]  
+# Shell-style comments
+pattern = '''
+  (comment) @injection.content
+  (#set! injection.language "todo-highlights")
+'''
+
+[[injections.patterns]]
+# Block comments
+pattern = '''
+  (block_comment) @injection.content
+  (#set! injection.language "todo-highlights")
+'''

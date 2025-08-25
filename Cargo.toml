@@ -1,0 +1,41 @@
+[package]
+name = "willow"
+version = "0.1.0"
+edition = "2021"
+authors = ["willibrandon <willibrandon@users.noreply.github.com>"]
+description = "Universal TODO/FIXME/HACK highlighting extension for Zed"
+repository = "https://github.com/willibrandon/willow"
+license = "MIT"
+keywords = ["zed", "extension", "todo", "highlighting", "productivity"]
+
+[lib]
+crate-type = ["cdylib", "rlib"]  # cdylib for WASM, rlib for testing
+
+[dependencies]
+zed_extension_api = "0.6.0"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+regex = "1.10"
+lazy_static = "1.4"
+
+[dev-dependencies]
+tempfile = "3.8"
+pretty_assertions = "1.4"
+criterion = "0.5"
+
+[profile.release]
+opt-level = "z"     # Optimize for size (important for WASM)
+lto = true          # Link-time optimization
+codegen-units = 1   # Single codegen unit for smaller size
+panic = "abort"     # Smaller binary size
+
+[profile.test]
+opt-level = 2  # Optimize tests for faster execution
+
+[[bench]]
+name = "pattern_matching"
+harness = false
+
+[[bench]]
+name = "cache_performance"
+harness = false

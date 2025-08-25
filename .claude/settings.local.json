@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(chmod:*)",
+      "Bash(./scripts/build.sh:*)",
+      "Bash(cargo:*)",
+      "Bash(rustc:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

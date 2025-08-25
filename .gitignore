@@ -1,0 +1,52 @@
+# Rust build artifacts
+/target/
+**/*.rs.bk
+Cargo.lock
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.temp
+debug_test.rs
+debug_test
+
+# Benchmark results
+benchmark-results/
+
+# Coverage reports
+target/coverage/
+*.profraw
+*.profdata
+
+# Tree-sitter generated files
+tree-sitter-todo-injections/src/
+tree-sitter-todo-injections/build/
+tree-sitter-todo-injections/node_modules/
+tree-sitter-todo-injections/*.so
+tree-sitter-todo-injections/*.dylib
+tree-sitter-todo-injections/*.dll
+
+# Examples output
+examples/debug_test
+
+# Log files
+*.log
+
+# Local configuration
+.env
+.env.local
