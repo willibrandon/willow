@@ -33,11 +33,17 @@ cd "$TEMP_DIR"
 
 echo -e "${YELLOW}Forking and cloning extensions repo...${NC}"
 
-# Fork if needed (will skip if already forked)
-gh repo fork "$EXTENSIONS_REPO" --clone=false 2>/dev/null || true
-
 # Get the fork owner (current authenticated user)
 FORK_OWNER=$(gh api user --jq .login)
+
+# Fork the repository (this will create willibrandon/extensions)
+echo "Forking $EXTENSIONS_REPO to $FORK_OWNER/extensions..."
+gh repo fork "$EXTENSIONS_REPO" --clone=false || {
+    echo "Fork might already exist, continuing..."
+}
+
+# Wait a moment for the fork to be ready
+sleep 3
 
 # Clone the fork using token authentication
 git clone "https://$GITHUB_TOKEN@github.com/$FORK_OWNER/extensions.git" extensions
