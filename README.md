@@ -31,6 +31,10 @@ Keywords are highlighted in comments using your theme's colors, distinct from re
 
 ![Willow highlighting demo](assets/willow-highlighting-demo.png)
 
+With custom theme overrides:
+
+![Willow custom colors demo](assets/willow-highlighting-demo-custom.png)
+
 ## Supported Languages 🌍
 
 - Rust
