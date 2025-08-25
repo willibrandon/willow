@@ -24,5 +24,11 @@ languages = [
     "languages/bash-injections",
     "languages/yaml-injections",
     "languages/toml-injections",
-    "languages/json5-injections"
+    "languages/json5-injections",
+    "languages/swift-injections",
+    "languages/kotlin-injections",
+    "languages/php-injections",
+    "languages/c_sharp-injections",
+    "languages/elixir-injections",
+    "languages/haskell-injections"
 ]
