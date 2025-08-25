@@ -125,10 +125,14 @@ TODO/FIXME highlighter extension for Zed.
 - Validated with multiple languages
 - Performance tested with large files"
 
-# Try creating the PR with explicit base
+# Try creating the PR from the fork's perspective
+cd ../
+gh repo clone "$FORK_OWNER/extensions" fork-extensions
+cd fork-extensions
+git checkout "$BRANCH_NAME"
+
 PR_URL=$(gh pr create \
     --repo "$EXTENSIONS_REPO" \
-    --head "$FORK_OWNER:$BRANCH_NAME" \
     --base "main" \
     --title "Add Willow v$VERSION - TODO/FIXME highlighter" \
     --body "$PR_BODY")
