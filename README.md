@@ -29,6 +29,8 @@ Willow is a TODO/FIXME highlighting extension for the Zed editor that uses tree-
 
 Keywords are highlighted in comments using your theme's syntax colors, appearing distinct from regular comment text.
 
+![Willow highlighting demo](assets/willow-highlighting-demo.png)
+
 ## Supported Languages 🌍
 
 - Rust
