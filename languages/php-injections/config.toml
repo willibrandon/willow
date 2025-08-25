@@ -1,3 +1,3 @@
-name = "PHP with TODOs"
+name = "PHP"
 grammar = "php"
 path_suffixes = ["php"]

@@ -1,3 +1,3 @@
-name = "C++ with TODOs"
+name = "C++"
 grammar = "cpp"
-path_suffixes = ["cpp", "cc", "cxx", "hpp", "hh", "hxx"]
+path_suffixes = ["cpp", "cc", "hpp"]

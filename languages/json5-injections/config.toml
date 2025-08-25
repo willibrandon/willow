@@ -1,3 +1,3 @@
-name = "JSON5 with TODOs"
+name = "JSON5"
 grammar = "json5"
 path_suffixes = ["json5"]

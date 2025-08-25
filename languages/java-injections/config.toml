@@ -1,3 +1,3 @@
-name = "Java with TODOs"
+name = "Java"
 grammar = "java"
 path_suffixes = ["java"]
