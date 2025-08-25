@@ -104,6 +104,12 @@ git ls-remote origin "$BRANCH_NAME" || {
     exit 1
 }
 
+# Debug: Check what changes we have
+echo "Checking differences between main and our branch..."
+git diff upstream/main..HEAD --name-only
+echo "Checking commit log..."
+git log upstream/main..HEAD --oneline
+
 PR_BODY="## Willow v$VERSION
 
 TODO/FIXME highlighter extension for Zed.
@@ -119,9 +125,11 @@ TODO/FIXME highlighter extension for Zed.
 - Validated with multiple languages
 - Performance tested with large files"
 
+# Try creating the PR with explicit base
 PR_URL=$(gh pr create \
     --repo "$EXTENSIONS_REPO" \
     --head "$FORK_OWNER:$BRANCH_NAME" \
+    --base "main" \
     --title "Add Willow v$VERSION - TODO/FIXME highlighter" \
     --body "$PR_BODY")
 
