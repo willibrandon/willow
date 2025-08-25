@@ -1,0 +1,53 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  release:
+    name: Release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        
+      - name: Get version from tag
+        id: version
+        run: echo "VERSION=${GITHUB_REF#refs/tags/v}" >> $GITHUB_OUTPUT
+        
+      - name: Validate and Package
+        run: |
+          chmod +x scripts/*.sh
+          ./scripts/release.sh "${{ steps.version.outputs.VERSION }}"
+        
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: |
+            dist/willow-*.tar.gz
+            dist/willow-*.zip
+          body: |
+            ## Willow v${{ steps.version.outputs.VERSION }}
+            
+            TODO/FIXME highlighter for Zed editor
+            
+            ### Installation
+            1. Download the archive below
+            2. Extract it
+            3. In Zed: `Cmd+Shift+P` → "Install Dev Extension"
+            4. Select the extracted directory
+            
+          generate_release_notes: true
+
+      - name: Submit to Zed Extensions
+        if: "!contains(github.ref, 'beta') && !contains(github.ref, 'alpha')"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          ./scripts/submit-to-zed.sh "${{ steps.version.outputs.VERSION }}"
