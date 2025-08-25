@@ -4,9 +4,6 @@
 
 Willow is a TODO/FIXME highlighting extension for the Zed editor that uses tree-sitter comment grammar injection to provide universal highlighting across all programming languages.
 
-![License](https://img.shields.io/badge/license-MIT-blue.svg)
-![Zed](https://img.shields.io/badge/zed-extension-green.svg)
-
 ## Features ✨
 
 - **Universal Language Support**: Works with 14+ languages out of the box

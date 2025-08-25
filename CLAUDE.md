@@ -4,48 +4,61 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-Willow is a TODO/FIXME highlighter extension for the Zed editor. The project is in the design and planning phase, with comprehensive documentation outlining the architecture and implementation approach for a tree-sitter-based highlighting system.
+Willow is a TODO/FIXME highlighter extension for the Zed editor that uses tree-sitter comment grammar injection to provide universal highlighting across all programming languages.
 
 ## Architecture
 
-This is a documentation-only repository containing three main design documents:
+The extension is purely configuration-based with no compilation required:
 
-- **docs/design.md** - Complete technical design including architecture, components, performance targets, and implementation phases
-- **docs/guide.md** - Step-by-step implementation guide with practical examples and code samples  
-- **docs/testing-guide.md** - Comprehensive testing strategy covering unit tests, integration tests, benchmarks, and manual testing
+- **Grammar Injection** - Uses tree-sitter-comment grammar injected into language comment nodes
+- **Pattern Matching** - Highlights TODO, FIXME, HACK, NOTE, BUG, OPTIMIZE, SECURITY, DEPRECATED, REVIEW, REFACTOR patterns
+- **Language Support** - Currently supports 14 languages with easy extensibility
+- **Theme Integration** - Works with Zed's theme system via syntax token highlighting
 
-The design follows a modular architecture with these key components:
-- **Scanner Module** - Tree-sitter based comment extraction with regex fallback
-- **Pattern Registry** - Configurable TODO/FIXME/HACK pattern matching
-- **Cache System** - LRU caching for performance optimization
-- **Language Support** - Universal language support via tree-sitter queries
-- **UI Integration** - Theme-based highlighting within Zed's constraints
+## Project Structure
+
+```
+willow/
+├── extension.toml           # Extension manifest
+├── languages/              # Language configurations
+│   ├── comment/           # Core comment grammar highlighting
+│   └── *-injections/      # Per-language injection rules
+└── scripts/               # Helper scripts
+```
 
 ## Development Commands
 
-This is currently a documentation-only project with no build system or code implementation yet. Based on the design documents, the planned implementation will use:
-
 ```bash
-# Future Rust/WASM build commands (not yet implemented)
-cargo build --release --target wasm32-wasip1
-cargo test
-cargo bench
+# No build required - this is a configuration-only extension
 
-# Tree-sitter grammar testing (planned)
-tree-sitter generate
-tree-sitter test
+# Install as dev extension in Zed:
+# 1. Open Zed
+# 2. Cmd+Shift+P → "Install Dev Extension"
+# 3. Select the willow directory
+
+# Add support for a new language:
+./scripts/add-language-support.sh
 ```
 
-## Key Implementation Constraints
+## Adding Language Support
 
-- Zed extensions run as WebAssembly modules compiled from Rust
-- Current Zed API limitations mean UI highlighting must be achieved through language injection and themes
-- Performance targets: <10ms for 1K LOC files, <50ms for 10K LOC files
-- Must support all languages Zed supports through tree-sitter queries with regex fallback
+To add a new language:
+1. Create `languages/{language}-injections/` directory
+2. Add `config.toml` with grammar name and file extensions
+3. Add `injections.scm` to inject comment grammar into comment nodes
+4. Update `extension.toml` to include the new language path
 
-## Development Workflow
+## Key Implementation Details
 
-1. Review design documents in docs/ directory to understand architecture
-2. Implementation will follow the phases outlined in docs/design.md
-3. Testing approach detailed in docs/testing-guide.md covers unit, integration, and performance testing
-4. Manual testing requires Zed installation and dev extension loading
+- Extension uses https://github.com/stsewd/tree-sitter-comment for comment parsing
+- No WebAssembly or Rust compilation needed
+- Zed downloads and compiles the grammar automatically
+- Highlighting colors can be customized via Zed's theme overrides
+
+## Testing
+
+Open files in supported languages and verify TODO/FIXME/etc patterns are highlighted. Check that:
+- Keywords at start of comments are highlighted
+- Keywords with colons (TODO:, FIXME:) work
+- Multiple patterns in same file work
+- Highlighting works in both line and block comments
