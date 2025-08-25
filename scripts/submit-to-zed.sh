@@ -39,8 +39,8 @@ gh repo fork "$EXTENSIONS_REPO" --clone=false 2>/dev/null || true
 # Get the fork owner (current authenticated user)
 FORK_OWNER=$(gh api user --jq .login)
 
-# Clone the fork  
-git clone "https://github.com/$FORK_OWNER/extensions.git" extensions
+# Clone the fork using token authentication
+git clone "https://$GITHUB_TOKEN@github.com/$FORK_OWNER/extensions.git" extensions
 cd extensions
 
 # Add upstream remote
@@ -85,6 +85,7 @@ comment markers across all languages in Zed."
 
 # Push to fork
 echo -e "${YELLOW}Pushing to fork...${NC}"
+git remote set-url origin "https://$GITHUB_TOKEN@github.com/$FORK_OWNER/extensions.git"
 git push origin "$BRANCH_NAME"
 
 # Create PR
@@ -105,14 +106,19 @@ TODO/FIXME highlighter extension for Zed.
 - Validated with multiple languages
 - Performance tested with large files"
 
-gh pr create \
+PR_URL=$(gh pr create \
     --repo "$EXTENSIONS_REPO" \
     --head "$FORK_OWNER:$BRANCH_NAME" \
     --title "Add Willow v$VERSION - TODO/FIXME highlighter" \
-    --body "$PR_BODY"
+    --body "$PR_BODY")
 
 # Clean up
 cd /
 rm -rf "$TEMP_DIR"
 
-echo -e "${GREEN}✓ Pull request created successfully!${NC}"
+if [ -n "$PR_URL" ]; then
+    echo -e "${GREEN}✓ Pull request created successfully: $PR_URL${NC}"
+else
+    echo -e "${RED}✗ Failed to create pull request${NC}"
+    exit 1
+fi
