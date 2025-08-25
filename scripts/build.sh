@@ -32,17 +32,13 @@ fi
 echo -e "${YELLOW}Cleaning previous builds...${NC}"
 cargo clean
 
-# Run tests first
+# Run tests first (build with test profile)
 echo -e "${YELLOW}Running tests...${NC}"
 cargo test --lib --quiet
 if [ $? -ne 0 ]; then
     echo -e "${RED}Tests failed. Build aborted.${NC}"
     exit 1
 fi
-
-# Build for testing (rlib)
-echo -e "${YELLOW}Building library for testing...${NC}"
-cargo build --lib
 
 # Build WebAssembly for Zed extension
 echo -e "${YELLOW}Building WebAssembly extension...${NC}"
@@ -82,5 +78,16 @@ if [ -d "tree-sitter-todo-injections" ] && command -v tree-sitter &> /dev/null; 
     cd ..
 fi
 
+# Copy extension.toml to target directory for easy installation
+echo -e "${YELLOW}Copying extension.toml to target directory...${NC}"
+cp extension.toml target/wasm32-wasip1/release/
+if [ $? -eq 0 ]; then
+    echo -e "${GREEN}✓ extension.toml copied successfully${NC}"
+else
+    echo -e "${YELLOW}⚠️  Failed to copy extension.toml${NC}"
+fi
+
 echo -e "${GREEN}🎉 Willow extension build complete!${NC}"
-echo "Ready for Zed installation at: target/wasm32-wasip1/release/willow.wasm"
+echo "Ready for Zed installation:"
+echo "  - WASM: target/wasm32-wasip1/release/willow.wasm"
+echo "  - Config: target/wasm32-wasip1/release/extension.toml"

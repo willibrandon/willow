@@ -9,7 +9,7 @@ license = "MIT"
 keywords = ["zed", "extension", "todo", "highlighting", "productivity"]
 
 [lib]
-crate-type = ["cdylib", "rlib"]  # cdylib for WASM, rlib for testing
+crate-type = ["cdylib"]
 
 [dependencies]
 zed_extension_api = "0.6.0"
