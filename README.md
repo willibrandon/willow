@@ -36,6 +36,12 @@ Willow is a TODO/FIXME highlighting extension for the Zed editor that uses tree-
 - C/C++
 - Java
 - Ruby
+- Swift
+- Kotlin
+- PHP
+- C#
+- Elixir
+- Haskell
 - Shell (Bash/Zsh)
 - YAML
 - TOML
