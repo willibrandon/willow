@@ -126,6 +126,7 @@ To add support for a new language, create a new injection configuration:
 ```
 willow/
 ├── extension.toml           # Extension manifest
+├── examples/               # Example files for all supported languages
 ├── languages/              # Language configurations
 │   ├── comment/           # Core comment grammar highlighting
 │   └── *-injections/      # Per-language injection rules

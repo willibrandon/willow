@@ -1,0 +1,17 @@
+# TODO: Add schema validation
+example:
+  # FIXME: Handle null values
+  data: []
+  
+  # HACK: YAML parser workaround
+  # NOTE: Uses anchors and aliases
+  # BUG: Duplicate keys not detected
+  # OPTIMIZE: Use references
+  # DEPRECATED: Use new_format
+  # SECURITY: Validate untrusted input
+  # REVIEW: Structure design
+  # REFACTOR: Split into multiple files
+  
+  config:
+    # TODO: Add environment variables
+    enabled: true

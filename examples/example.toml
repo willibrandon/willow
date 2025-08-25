@@ -1,0 +1,17 @@
+# TODO: Add table arrays
+[example]
+# FIXME: Type validation
+data = []
+
+# HACK: TOML parser limitation
+# NOTE: Uses dotted keys
+# BUG: Float precision issues
+# OPTIMIZE: Use inline tables
+# DEPRECATED: Use new_format
+# SECURITY: Validate dates
+# REVIEW: Key naming conventions
+# REFACTOR: Reorganize sections
+
+[example.config]
+# TODO: Add multiline strings
+enabled = true

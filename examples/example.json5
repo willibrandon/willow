@@ -1,0 +1,21 @@
+// TODO: Add JSON schema
+{
+  // FIXME: Handle undefined values
+  example: {
+    data: [],
+    
+    // HACK: JSON5 feature workaround
+    // NOTE: Supports trailing commas
+    // BUG: Number precision loss
+    // OPTIMIZE: Minimize file size
+    // DEPRECATED: Use new format
+    // SECURITY: Validate before parsing
+    // REVIEW: Property names
+    // REFACTOR: Flatten structure
+    
+    config: {
+      // TODO: Add default values
+      enabled: true,
+    },
+  },
+}
