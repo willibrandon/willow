@@ -1,0 +1,3 @@
+name = "Swift with TODOs"
+grammar = "swift"
+path_suffixes = ["swift"]

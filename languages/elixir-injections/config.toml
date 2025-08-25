@@ -1,0 +1,3 @@
+name = "Elixir with TODOs"
+grammar = "elixir"
+path_suffixes = ["ex", "exs"]
