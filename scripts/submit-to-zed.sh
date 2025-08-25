@@ -94,6 +94,16 @@ git push origin "$BRANCH_NAME"
 # Create PR
 echo -e "${YELLOW}Creating pull request...${NC}"
 
+# Wait a moment for GitHub to process the push
+sleep 5
+
+# Verify the branch exists on the remote
+echo "Verifying branch exists on remote..."
+git ls-remote origin "$BRANCH_NAME" || {
+    echo -e "${RED}Branch $BRANCH_NAME not found on remote${NC}"
+    exit 1
+}
+
 PR_BODY="## Willow v$VERSION
 
 TODO/FIXME highlighter extension for Zed.
