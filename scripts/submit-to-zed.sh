@@ -67,6 +67,7 @@ else
     # Add new entry
     echo "" >> extensions.toml
     echo "[willow]" >> extensions.toml
+    echo "submodule = \"extensions/willow\"" >> extensions.toml
     echo "version = \"$VERSION\"" >> extensions.toml
     echo "Added new willow entry with version $VERSION"
 fi
