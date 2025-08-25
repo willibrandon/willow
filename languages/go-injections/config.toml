@@ -1,0 +1,3 @@
+name = "Go with TODOs"
+grammar = "go"
+path_suffixes = ["go"]

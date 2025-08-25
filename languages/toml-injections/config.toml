@@ -1,0 +1,3 @@
+name = "TOML with TODOs"
+grammar = "toml"
+path_suffixes = ["toml"]

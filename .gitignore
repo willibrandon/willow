@@ -1,7 +1,6 @@
-# Rust build artifacts
-/target/
-**/*.rs.bk
-Cargo.lock
+# Extension build artifacts
+extension.wasm
+grammars/
 
 # IDE files
 .vscode/
@@ -22,37 +21,20 @@ Thumbs.db
 # Temporary files
 *.tmp
 *.temp
-debug_test.rs
-debug_test
 
-# Benchmark results
-benchmark-results/
-
-# Coverage reports
-target/coverage/
+# Old Rust/WASM artifacts (can be deleted)
+/target/
+**/*.rs.bk
+Cargo.lock
 *.profraw
 *.profdata
 
-# Tree-sitter generated files
-tree-sitter-todo-injections/build/
-tree-sitter-todo-injections/node_modules/
-tree-sitter-todo-injections/*.so
-tree-sitter-todo-injections/*.dylib
-tree-sitter-todo-injections/*.dll
-tree-sitter-todo-injections/Cargo.toml
-tree-sitter-todo-injections/binding.gyp
-tree-sitter-todo-injections/bindings/
-tree-sitter-todo-injections/package-lock.json
-
-# Examples output
-examples/debug_test
+# Old tree-sitter grammar (can be deleted)
+tree-sitter-todo-injections/
 
 # Log files
 *.log
 
-# Local configuration
-.env
-.env.local
-
-# Claude Code settings
+# Settings
+settings.local.json
 .claude/

@@ -2,152 +2,157 @@
 
 **A graceful TODO/FIXME highlighter for Zed - bending with your workflow, never breaking**
 
-Willow is a TODO/FIXME highlighting extension for the Zed editor that uses tree-sitter grammar injection for language-agnostic comment highlighting.
+Willow is a TODO/FIXME highlighting extension for the Zed editor that uses tree-sitter comment grammar injection to provide universal highlighting across all programming languages.
 
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
-![Rust](https://img.shields.io/badge/rust-1.70+-orange.svg)
 ![Zed](https://img.shields.io/badge/zed-extension-green.svg)
 
 ## Features ✨
 
-- **Universal Language Support**: Works with all Zed-supported languages using tree-sitter
-- **Efficient Highlighting**: Tree-sitter grammar-based pattern recognition
+- **Universal Language Support**: Works with 14+ languages out of the box
+- **Zero Compilation**: Pure configuration-based extension - no build step required
 - **Rich Pattern Recognition**: TODO, FIXME, HACK, NOTE, BUG, OPTIMIZE, SECURITY, and more
-- **Beautiful Themes**: Custom dark and light themes with distinct highlighting
-- **Unicode Support**: Handles international comments and emoji seamlessly
-- **Zero Dependencies**: Pure tree-sitter grammar with no external tools required
+- **Theme Integration**: Works with your existing Zed theme or custom overrides
+- **Lightweight**: No WebAssembly, no Rust compilation, just tree-sitter configuration
 
 ## Supported Keywords 🏷️
 
-| Keyword | Style | Priority | Description |
-|---------|-------|----------|-------------|
-| `TODO` | Info (Blue) | Medium | Tasks to be done |
-| `FIXME` | Warning (Yellow) | Medium | Known issues to fix |
-| `HACK` | Error (Red) | High | Temporary workarounds |
-| `NOTE` | Success (Green) | Low | Important information |
-| `BUG` | Error (Red) | High | Confirmed bugs |
-| `OPTIMIZE` | Info (Blue) | Medium | Performance improvements |
-| `SECURITY` | Critical (Red) | Critical | Security concerns |
-| `DEPRECATED` | Muted (Gray) | Medium | Obsolete code |
-| `REVIEW` | Purple | Medium | Code review needed |
-| `REFACTOR` | Orange | Medium | Refactoring needed |
+| Keyword | Default Style | Description |
+|---------|--------------|-------------|
+| `TODO` | Info (Blue) | Tasks to be done |
+| `FIXME` | Warning (Yellow) | Known issues to fix |
+| `HACK` | Error (Red) | Temporary workarounds |
+| `NOTE` | Success (Green) | Important information |
+| `BUG` | Error (Red) | Confirmed bugs |
+| `OPTIMIZE` | Purple | Performance improvements |
+| `SECURITY` | Critical (Red) | Security concerns |
+| `DEPRECATED` | Muted (Gray) | Obsolete code |
+| `REVIEW` | Cyan | Code review needed |
+| `REFACTOR` | Blue | Refactoring needed |
+
+## Supported Languages 🌍
+
+- Rust
+- JavaScript/TypeScript
+- Python
+- Go
+- C/C++
+- Java
+- Ruby
+- Shell (Bash/Zsh)
+- YAML
+- TOML
+- JSON5
+- And easily extensible to more!
 
 ## Installation 📦
 
-### From Zed Extensions (Coming Soon)
-
-1. Open Zed
-2. Run `zed: extensions` from the command palette
-3. Search for "Willow"
-4. Click Install
-
-### Development Installation
+### As a Dev Extension
 
 1. Clone this repository:
    ```bash
    git clone https://github.com/willibrandon/willow.git
-   cd willow
    ```
 
-2. Build the extension:
-   ```bash
-   ./scripts/build.sh
-   ```
+2. Open Zed
 
-3. Install in Zed:
-   ```bash
-   ./scripts/dev.sh install
-   ```
+3. Install the extension:
+   - Press `Cmd+Shift+P` (macOS) or `Ctrl+Shift+P` (Linux)
+   - Type "Install Dev Extension"
+   - Select the `willow` directory
 
-## Development 🛠️
+## Customization 🎨
 
-### Prerequisites
+### Theme Colors
 
-- Rust 1.70+ with `wasm32-wasip1` target
-- Zed editor
-- (Optional) tree-sitter CLI for grammar development
+Add custom colors to your Zed `settings.json`:
 
-### Quick Start
-
-```bash
-# Install Rust target
-rustup target add wasm32-wasip1
-
-# Clone and build
-git clone https://github.com/willibrandon/willow.git
-cd willow
-./scripts/build.sh
-
-# Run tests
-./scripts/test.sh
-
-# Development workflow
-./scripts/dev.sh watch  # Auto-rebuild on changes
-./scripts/dev.sh bench  # Run performance benchmarks
-./scripts/dev.sh install  # Install in Zed
+```json
+{
+  "experimental.theme_overrides": {
+    "syntax": {
+      "comment.todo": { "color": "#4FC1FF", "font_weight": 700 },
+      "comment.fixme": { "color": "#FFCC00", "font_weight": 700 },
+      "comment.hack": { "color": "#FF6B6B", "font_weight": 700 },
+      "comment.note": { "color": "#98C379", "font_weight": 700 },
+      "comment.bug": { "color": "#E06C75", "font_weight": 700 },
+      "comment.deprecated": { "color": "#7C7C7C", "font_weight": 700 },
+      "comment.security": { "color": "#FF0000", "font_weight": 700 },
+      "comment.optimize": { "color": "#C678DD", "font_weight": 700 },
+      "comment.review": { "color": "#56B6C2", "font_weight": 700 },
+      "comment.refactor": { "color": "#61AFEF", "font_weight": 700 }
+    }
+  }
+}
 ```
 
-### Project Structure
+### Adding Language Support
+
+To add support for a new language, create a new injection configuration:
+
+1. Create directory: `languages/{language}-injections/`
+2. Add `config.toml`:
+   ```toml
+   name = "Language with TODOs"
+   grammar = "language_grammar_name"
+   path_suffixes = ["ext"]
+   ```
+3. Add `injections.scm`:
+   ```scheme
+   ((comment) @injection.content
+    (#set! injection.language "comment"))
+   ```
+4. Update `extension.toml` to include the new language path
+
+## Project Structure 📁
 
 ```
 willow/
-├── src/                    # Extension configuration
-│   ├── lib.rs             # Main extension entry point
-│   ├── patterns.rs        # Pattern definitions
-│   └── cache.rs           # Caching utilities
-├── themes/                # Zed themes with TODO highlighting
-│   ├── willow-dark.json   # Dark theme
-│   └── willow-light.json  # Light theme
-├── tree-sitter-todo-injections/  # Tree-sitter grammar for highlighting
-├── languages/             # Language configuration
-├── tests/                 # Test suite
-├── benches/              # Benchmarks
-└── scripts/              # Development tools
+├── extension.toml           # Extension manifest
+├── languages/              # Language configurations
+│   ├── comment/           # Core comment grammar highlighting
+│   └── *-injections/      # Per-language injection rules
+└── scripts/               # Helper scripts
+    └── add-language-support.sh  # Add new language support
 ```
 
-### Testing
+## How It Works 🔧
 
-```bash
-# Run all tests
-cargo test
+Willow leverages the [tree-sitter-comment](https://github.com/stsewd/tree-sitter-comment) grammar to parse comment content and highlight TODO patterns:
 
-# Run specific test categories
-cargo test --test integration
-cargo test --lib patterns
+1. **Grammar Injection**: Each language's comment nodes are injected with the comment grammar
+2. **Pattern Matching**: The comment grammar identifies TODO-style patterns
+3. **Syntax Highlighting**: Zed applies theme colors to the identified patterns
 
-# Performance benchmarks
-cargo bench
+No compilation, no WebAssembly, just pure tree-sitter configuration!
 
-# Performance analysis
-./scripts/performance-test.sh
-```
-
-### Build Targets 🎯
-
-| Metric | Target | Status |
-|--------|---------|---------|
-| WASM binary size | <2MB | ✅ |
-| Compilation time | <30s | ✅ |
-| Grammar injection | All languages | ✅ |
-| Theme compatibility | Dark/Light | ✅ |
-
-## Architecture 🏗️
-
-Willow uses tree-sitter grammar injection for syntax highlighting:
-
-- **Grammar Injection**: Tree-sitter grammar that injects into comment nodes
-- **Pattern Recognition**: Grammar-level keyword detection for TODO, FIXME, HACK, etc.
-- **Theme Integration**: Custom highlighting rules integrated with Zed's theme system
-- **Universal Support**: Works across all languages supported by Zed
-
-## Contributing
+## Contributing 🤝
 
 1. Fork the repository
 2. Create a feature branch
-3. Make changes with tests
-4. Run `./scripts/test.sh`
-5. Submit a pull request
+3. Add language support or improve patterns
+4. Submit a pull request
 
-## License
+### Adding a New Pattern
+
+Edit `languages/comment/highlights.scm` to add new patterns:
+
+```scheme
+((tag (name) @comment.yourpattern)
+ (#any-of? @comment.yourpattern "YOURPATTERN" "yourpattern"))
+```
+
+## FAQ ❓
+
+**Q: Why doesn't highlighting work in my language?**
+A: Check if your language is in the supported list. If not, you can easily add it following the instructions above.
+
+**Q: Can I change the highlight colors?**
+A: Yes! Use the theme overrides in your Zed settings.json.
+
+**Q: Does this slow down the editor?**
+A: No, tree-sitter grammars are highly optimized and run at native speed.
+
+## License 📄
 
 MIT License - see [LICENSE](LICENSE) file.

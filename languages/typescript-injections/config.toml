@@ -1,0 +1,3 @@
+name = "TypeScript with TODOs"
+grammar = "typescript"
+path_suffixes = ["ts", "tsx"]

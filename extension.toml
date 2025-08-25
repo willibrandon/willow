@@ -1,12 +1,28 @@
 id = "willow"
-name = "Willow - TODO Highlighter"
+name = "Willow"
 version = "0.1.0"
 schema_version = 1
 authors = ["willibrandon <willibrandon@users.noreply.github.com>"]
-description = "Universal TODO/FIXME/HACK highlighting for all languages"
+description = "TODO/FIXME highlighting"
 repository = "https://github.com/willibrandon/willow"
 
-[grammars.todo_injections]
-repository = "https://github.com/willibrandon/willow"
-path = "tree-sitter-todo-injections"
-commit = "main"
+[grammars.comment]
+repository = "https://github.com/stsewd/tree-sitter-comment"
+commit = "689be73775bd2dd57b938b8e12bf50fec35a6ca3"
+
+languages = [
+    "languages/comment",
+    "languages/rust-injections",
+    "languages/javascript-injections",
+    "languages/typescript-injections",
+    "languages/python-injections",
+    "languages/go-injections",
+    "languages/c-injections",
+    "languages/cpp-injections",
+    "languages/java-injections",
+    "languages/ruby-injections",
+    "languages/bash-injections",
+    "languages/yaml-injections",
+    "languages/toml-injections",
+    "languages/json5-injections"
+]

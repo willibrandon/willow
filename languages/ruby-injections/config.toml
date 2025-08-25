@@ -1,0 +1,3 @@
+name = "Ruby with TODOs"
+grammar = "ruby"
+path_suffixes = ["rb"]
