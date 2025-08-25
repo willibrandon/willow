@@ -47,6 +47,9 @@ cd extensions
 git remote add upstream "https://github.com/$EXTENSIONS_REPO.git"
 git fetch upstream
 
+# Delete existing branch if it exists
+git push origin --delete "$BRANCH_NAME" 2>/dev/null || true
+
 # Create new branch from upstream/main
 git checkout -b "$BRANCH_NAME" upstream/main
 
@@ -57,21 +60,18 @@ git submodule add "https://github.com/$MY_REPO.git" extensions/willow
 
 # Update extensions.toml
 echo -e "${YELLOW}Updating extensions.toml...${NC}"
-echo "Current directory: $(pwd)"
-echo "Files in current directory: $(ls -la)"
-echo "Looking for extensions.toml..."
 
 # Check if willow already exists in extensions.toml
 if grep -q '^\[willow\]' extensions.toml; then
     # Update existing entry
     sed -i.bak "/^\[willow\]/,/^$/s/version = .*/version = \"$VERSION\"/" extensions.toml
+    echo "Updated existing willow entry to version $VERSION"
 else
     # Add new entry
-    cat >> extensions.toml << EOF
-
-[willow]
-version = "$VERSION"
-EOF
+    echo "" >> extensions.toml
+    echo "[willow]" >> extensions.toml
+    echo "version = \"$VERSION\"" >> extensions.toml
+    echo "Added new willow entry with version $VERSION"
 fi
 
 rm -f extensions.toml.bak
