@@ -50,3 +50,6 @@ examples/debug_test
 # Local configuration
 .env
 .env.local
+
+# Claude Code settings
+.claude/
