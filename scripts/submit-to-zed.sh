@@ -31,21 +31,12 @@ fi
 TEMP_DIR=$(mktemp -d)
 cd "$TEMP_DIR"
 
-echo -e "${YELLOW}Forking and cloning extensions repo...${NC}"
+echo -e "${YELLOW}Cloning existing fork...${NC}"
 
-# Get the fork owner (current authenticated user)
-FORK_OWNER=$(gh api user --jq .login)
+# Use the existing fork
+FORK_OWNER="willibrandon"
 
-# Fork the repository (this will create willibrandon/extensions)
-echo "Forking $EXTENSIONS_REPO to $FORK_OWNER/extensions..."
-gh repo fork "$EXTENSIONS_REPO" --clone=false || {
-    echo "Fork might already exist, continuing..."
-}
-
-# Wait a moment for the fork to be ready
-sleep 3
-
-# Clone the fork using token authentication
+# Clone the existing fork
 git clone "https://$GITHUB_TOKEN@github.com/$FORK_OWNER/extensions.git" extensions
 cd extensions
 
@@ -84,8 +75,8 @@ rm -f extensions.toml.bak
 
 # Commit changes
 echo -e "${YELLOW}Committing changes...${NC}"
-git config user.name "github-actions[bot]"
-git config user.email "github-actions[bot]@users.noreply.github.com"
+git config user.name "willibrandon"
+git config user.email "willibrandon@users.noreply.github.com"
 git add .
 git commit -m "Add Willow v$VERSION - TODO/FIXME highlighter
 
@@ -131,14 +122,9 @@ TODO/FIXME highlighter extension for Zed.
 - Validated with multiple languages
 - Performance tested with large files"
 
-# Try creating the PR from the fork's perspective
-cd ../
-gh repo clone "$FORK_OWNER/extensions" fork-extensions
-cd fork-extensions
-git checkout "$BRANCH_NAME"
-
 PR_URL=$(gh pr create \
     --repo "$EXTENSIONS_REPO" \
+    --head "$FORK_OWNER:$BRANCH_NAME" \
     --base "main" \
     --title "Add Willow v$VERSION - TODO/FIXME highlighter" \
     --body "$PR_BODY")
