@@ -9,6 +9,7 @@ license = "MIT"
 keywords = ["zed", "extension", "todo", "highlighting", "productivity"]
 
 [lib]
+path = "src/lib.rs"
 crate-type = ["cdylib"]
 
 [dependencies]

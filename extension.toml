@@ -3,8 +3,10 @@ name = "Willow - TODO Highlighter"
 version = "0.1.0"
 schema_version = 1
 authors = ["willibrandon <willibrandon@users.noreply.github.com>"]
-description = "Universal TODO/FIXME/HACK highlighting for all languages using tree-sitter"
+description = "Universal TODO/FIXME/HACK highlighting for all languages"
 repository = "https://github.com/willibrandon/willow"
 
-[lib]
-path = "."
+[grammars.todo_injections]
+repository = "https://github.com/willibrandon/willow"
+path = "tree-sitter-todo-injections"
+commit = "main"

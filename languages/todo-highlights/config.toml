@@ -1,5 +1,5 @@
 name = "TODO Highlights"
-grammar = "todo-injections"
+grammar = "todo_injections"
 path_suffixes = []
 
 # This language is used for injection into comments

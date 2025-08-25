@@ -22,61 +22,61 @@ module.exports = grammar({
     ),
 
     todo_item: $ => seq(
-      field('keyword', /\b(TODO|todo|Todo)\b/),
+      field('keyword', /(TODO|todo|Todo)/),
       optional(':'),
       optional(field('message', $.message))
     ),
 
     fixme_item: $ => seq(
-      field('keyword', /\b(FIXME|fixme|FixMe)\b/),
+      field('keyword', /(FIXME|fixme|FixMe)/),
       optional(':'),
       optional(field('message', $.message))
     ),
 
     hack_item: $ => seq(
-      field('keyword', /\b(HACK|hack|Hack)\b/),
+      field('keyword', /(HACK|hack|Hack)/),
       optional(':'),
       optional(field('message', $.message))
     ),
 
     note_item: $ => seq(
-      field('keyword', /\b(NOTE|note|Note)\b/),
+      field('keyword', /(NOTE|note|Note)/),
       optional(':'),
       optional(field('message', $.message))
     ),
 
     bug_item: $ => seq(
-      field('keyword', /\b(BUG|bug|Bug)\b/),
+      field('keyword', /(BUG|bug|Bug)/),
       optional(':'),
       optional(field('message', $.message))
     ),
 
     optimize_item: $ => seq(
-      field('keyword', /\b(OPTIMIZE|OPTIMI[SZ]E|optimi[sz]e|Optimize)\b/),
+      field('keyword', /(OPTIMIZE|OPTIMI[SZ]E|optimi[sz]e|Optimize)/),
       optional(':'),
       optional(field('message', $.message))
     ),
 
     deprecated_item: $ => seq(
-      field('keyword', /\b(DEPRECATED|deprecated|Deprecated)\b/),
+      field('keyword', /(DEPRECATED|deprecated|Deprecated)/),
       optional(':'),
       optional(field('message', $.message))
     ),
 
     security_item: $ => seq(
-      field('keyword', /\b(SECURITY|SEC|security|sec|Security)\b/),
+      field('keyword', /(SECURITY|SEC|security|sec|Security)/),
       optional(':'),
       optional(field('message', $.message))
     ),
 
     review_item: $ => seq(
-      field('keyword', /\b(REVIEW|review|Review)\b/),
+      field('keyword', /(REVIEW|review|Review)/),
       optional(':'),
       optional(field('message', $.message))
     ),
 
     refactor_item: $ => seq(
-      field('keyword', /\b(REFACTOR|refactor|Refactor)\b/),
+      field('keyword', /(REFACTOR|refactor|Refactor)/),
       optional(':'),
       optional(field('message', $.message))
     ),

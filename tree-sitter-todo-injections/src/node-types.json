@@ -1,0 +1,221 @@
+[
+  {
+    "type": "bug_item",
+    "named": true,
+    "fields": {
+      "message": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "message",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "deprecated_item",
+    "named": true,
+    "fields": {
+      "message": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "message",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "fixme_item",
+    "named": true,
+    "fields": {
+      "message": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "message",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "hack_item",
+    "named": true,
+    "fields": {
+      "message": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "message",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "note_item",
+    "named": true,
+    "fields": {
+      "message": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "message",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "optimize_item",
+    "named": true,
+    "fields": {
+      "message": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "message",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "refactor_item",
+    "named": true,
+    "fields": {
+      "message": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "message",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "review_item",
+    "named": true,
+    "fields": {
+      "message": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "message",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "security_item",
+    "named": true,
+    "fields": {
+      "message": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "message",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "source_file",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "bug_item",
+          "named": true
+        },
+        {
+          "type": "deprecated_item",
+          "named": true
+        },
+        {
+          "type": "fixme_item",
+          "named": true
+        },
+        {
+          "type": "hack_item",
+          "named": true
+        },
+        {
+          "type": "note_item",
+          "named": true
+        },
+        {
+          "type": "optimize_item",
+          "named": true
+        },
+        {
+          "type": "refactor_item",
+          "named": true
+        },
+        {
+          "type": "review_item",
+          "named": true
+        },
+        {
+          "type": "security_item",
+          "named": true
+        },
+        {
+          "type": "todo_item",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "todo_item",
+    "named": true,
+    "fields": {
+      "message": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "message",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": ":",
+    "named": false
+  },
+  {
+    "type": "message",
+    "named": true
+  }
+]

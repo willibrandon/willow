@@ -34,12 +34,15 @@ target/coverage/
 *.profdata
 
 # Tree-sitter generated files
-tree-sitter-todo-injections/src/
 tree-sitter-todo-injections/build/
 tree-sitter-todo-injections/node_modules/
 tree-sitter-todo-injections/*.so
 tree-sitter-todo-injections/*.dylib
 tree-sitter-todo-injections/*.dll
+tree-sitter-todo-injections/Cargo.toml
+tree-sitter-todo-injections/binding.gyp
+tree-sitter-todo-injections/bindings/
+tree-sitter-todo-injections/package-lock.json
 
 # Examples output
 examples/debug_test

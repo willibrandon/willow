@@ -78,13 +78,15 @@ if [ -d "tree-sitter-todo-injections" ] && command -v tree-sitter &> /dev/null; 
     cd ..
 fi
 
-# Copy extension.toml to target directory for easy installation
-echo -e "${YELLOW}Copying extension.toml to target directory...${NC}"
+# Copy extension files to target directory for easy installation
+echo -e "${YELLOW}Copying extension files to target directory...${NC}"
 cp extension.toml target/wasm32-wasip1/release/
+cp -r languages target/wasm32-wasip1/release/
+cp -r themes target/wasm32-wasip1/release/
 if [ $? -eq 0 ]; then
-    echo -e "${GREEN}✓ extension.toml copied successfully${NC}"
+    echo -e "${GREEN}✓ Extension files copied successfully${NC}"
 else
-    echo -e "${YELLOW}⚠️  Failed to copy extension.toml${NC}"
+    echo -e "${YELLOW}⚠️  Failed to copy extension files${NC}"
 fi
 
 echo -e "${GREEN}🎉 Willow extension build complete!${NC}"
