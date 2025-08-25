@@ -38,7 +38,7 @@ With custom theme overrides:
 ## Supported Languages 🌍
 
 - Rust
-- JavaScript/TypeScript
+- JavaScript/TypeScript/TSX
 - Python
 - Go
 - C/C++
@@ -56,6 +56,8 @@ With custom theme overrides:
 - JSON5
 - And easily extensible to more!
 
+> **Note:** Some languages require their respective Zed extensions to be installed for syntax highlighting to work. Languages like JavaScript, TypeScript, C, and C++ work out of the box, while others (Ruby, Java, PHP, Swift, Elixir, Haskell, TOML, JSON5) need their language extensions installed from the Zed Extension Gallery.
+
 ## Installation 📦
 
 ### From Zed Extension Gallery
@@ -66,6 +68,8 @@ With custom theme overrides:
    - Or select "Zed > Extensions" from the menu bar
 
 2. Search for "Willow" and click Install
+
+3. Install language extensions as needed for full support (see Supported Languages section)
 
 ### As a Dev Extension
 

@@ -10,11 +10,22 @@ repository = "https://github.com/willibrandon/willow"
 repository = "https://github.com/stsewd/tree-sitter-comment"
 commit = "689be73775bd2dd57b938b8e12bf50fec35a6ca3"
 
+[grammars.typescript]
+repository = "https://github.com/tree-sitter/tree-sitter-typescript"
+commit = "b1bf4825d9eaa0f3bdeb1e52f099533328acfbdf"
+path = "typescript"
+
+[grammars.tsx]
+repository = "https://github.com/tree-sitter/tree-sitter-typescript"
+commit = "b1bf4825d9eaa0f3bdeb1e52f099533328acfbdf"
+path = "tsx"
+
 languages = [
     "languages/comment",
     "languages/rust-injections",
     "languages/javascript-injections",
     "languages/typescript-injections",
+    "languages/tsx-injections",
     "languages/python-injections",
     "languages/go-injections",
     "languages/c-injections",
