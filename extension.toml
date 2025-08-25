@@ -3,7 +3,7 @@ name = "Willow"
 version = "0.1.0"
 schema_version = 1
 authors = ["willibrandon <willibrandon@users.noreply.github.com>"]
-description = "TODO/FIXME highlighting"
+description = "Universal TODO/FIXME/HACK highlighter for all languages"
 repository = "https://github.com/willibrandon/willow"
 
 [grammars.comment]
