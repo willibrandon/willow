@@ -65,6 +65,6 @@ jobs:
       - name: Submit to Zed Extensions
         if: "!contains(github.ref, 'beta') && !contains(github.ref, 'alpha')"
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
         run: |
           ./scripts/submit-to-zed.sh "${{ steps.version.outputs.VERSION }}"
