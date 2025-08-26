@@ -12,7 +12,7 @@ The extension is purely configuration-based with no compilation required:
 
 - **Grammar Injection** - Uses tree-sitter-comment grammar injected into language comment nodes
 - **Pattern Matching** - Highlights TODO, FIXME, HACK, NOTE, BUG, OPTIMIZE, SECURITY, DEPRECATED, REVIEW, REFACTOR patterns
-- **Language Support** - Currently supports 14 languages with easy extensibility
+- **Language Support** - Currently supports 18 languages with easy extensibility
 - **Theme Integration** - Works with Zed's theme system via syntax token highlighting
 
 ## Project Structure

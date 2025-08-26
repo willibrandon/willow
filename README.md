@@ -6,7 +6,7 @@ Willow is a TODO/FIXME highlighting extension for the Zed editor that uses tree-
 
 ## Features ✨
 
-- **Universal Language Support**: Works with 19+ languages out of the box
+- **Universal Language Support**: Works with 18+ languages out of the box
 - **Zero Compilation**: Pure configuration-based extension - no build step required
 - **Rich Pattern Recognition**: TODO, FIXME, HACK, NOTE, BUG, OPTIMIZE, SECURITY, and more
 - **Theme Integration**: Works with your existing Zed theme or custom overrides
@@ -44,7 +44,6 @@ With custom theme overrides:
 - C/C++
 - Java
 - Ruby
-- Swift
 - Kotlin
 - PHP
 - C#
@@ -56,7 +55,7 @@ With custom theme overrides:
 - JSON5
 - And easily extensible to more!
 
-> **Note:** Some languages require their respective Zed extensions to be installed for syntax highlighting to work. Languages like JavaScript, TypeScript, C, and C++ work out of the box, while others (Ruby, Java, PHP, Swift, Elixir, Haskell, TOML, JSON5) need their language extensions installed from the Zed Extension Gallery.
+> **Note:** Some languages require their respective Zed extensions to be installed for syntax highlighting to work. Built-in support includes Rust, Python, JavaScript, TypeScript, C, C++, Go, Bash, YAML, and Kotlin. Other languages (Ruby, Java, PHP, C#, Elixir, Haskell, TOML, JSON5) need their language extensions installed from the Zed Extension Gallery.
 
 ## Installation 📦
 

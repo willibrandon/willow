@@ -6,7 +6,7 @@ All notable changes to Willow will be documented in this file.
 
 ### Added
 - Initial release of Willow TODO/FIXME highlighter
-- Support for 19 languages: Rust, JavaScript, TypeScript, Python, Go, C/C++, Java, Ruby, Swift, Kotlin, PHP, C#, Elixir, Haskell, Bash, YAML, TOML, JSON5
+- Support for 18 languages: Rust, JavaScript, TypeScript, Python, Go, C/C++, Java, Ruby, Kotlin, PHP, C#, Elixir, Haskell, Bash, YAML, TOML, JSON5
 - Highlighting for 10 keyword patterns: TODO, FIXME, HACK, NOTE, BUG, OPTIMIZE, SECURITY, DEPRECATED, REVIEW, REFACTOR
 - Tree-sitter comment grammar injection system
 - Theme integration with custom color overrides
